@@ -9,7 +9,7 @@
  **/
 void print_int(va_list parg)
 {
-	int n, num, x , i, p, len;
+	int n, num, x , i, p, len, digit;
 
 	n = va_arg(parg, int);
 	if (n != 0)
@@ -20,21 +20,29 @@ void print_int(va_list parg)
 			n = -n;
 		}
 		num = n;
-		len = 0;
+		len = -1;
 		x = 1;
 		while (num != 0)
 		{
 			num /= 10;
 			len++;
 		}
-		for (i = 0; i < len; i++)
+		for (i = 1; i <= len; i++)
 		{
 			x *= 10;
 		}
-		for (p = 0; p < len; p++)
+		for (p = 0; p <= len; p++)
 		{
-			n /= x;
-			_putchar('0' + n);
+			digit = n / x;
+			if (n < 0)
+			{
+				_putchar((digit * -1) + 48);
+			}
+			else
+			{
+				_putchar(digit + '0');
+			}
+			n -= digit * x;
 			x /= 10;
 		}
 	}

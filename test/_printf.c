@@ -35,22 +35,32 @@ int _printf(const char *format, ...)
 					_putchar(format[index]);
 					index++;
 					count++;
-					_putchar(format[index + 1]);
+					_putchar(format[index]);
 				}
 				else if (format[index + 1] == 'c')
 				{
 					print_char(parg);
+					index++;
 				}
 				else if (format[index + 1] == 's')
 				{
 					print_string(parg);
+					index++;
 				}
-				else if (format[index + 1] == 'i')
+				else if (format[index + 1] == 'i' || format[index + 1] == 'd')
 				{
 					print_int(parg);
+					index++;
 				}
-				index += 2;
-				count += 2;
+				else
+				{
+					_putchar(format[index]);
+					index++;
+					count++;
+					_putchar(format[index]);
+				}
+				index++;
+				count++;
 			}
 		}
 		return (count);
