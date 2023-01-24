@@ -49,8 +49,8 @@ int _printf(const char *format, ...)
 				{
 					_putchar(va_arg(parg, int));
 				}
-				index++;
-				count++;
+				index += 2;
+				count += 2;
 			}
 		}
 		return (count);
