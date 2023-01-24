@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 				}
 				else if (format[index + 1] == 'c')
 				{
-					_putchar(va_arg(parg, int));
+					print_char(parg);
 				}
 				else if (format[index + 1] == 's')
 				{
