@@ -47,7 +47,7 @@ int _printf(const char *format, ...)
 				}
 				else if (format[index + 1] == 'i')
 				{
-					_putchar(va_arg(parg, int));
+					print_int(parg);
 				}
 				index += 2;
 				count += 2;
