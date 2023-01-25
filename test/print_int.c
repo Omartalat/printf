@@ -7,9 +7,9 @@
  ** Descriptions: prints digit with _putchar
  ** Return: size the output text
  **/
-void print_int(va_list parg)
+int print_int(va_list parg)
 {
-	int n, num, x , i, p, len, digit;
+	int n, num, x , i, p, len, digit, co = 0;
 
 	n = va_arg(parg, int);
 	if (n != 0)
@@ -17,6 +17,7 @@ void print_int(va_list parg)
 		if (n < 0)
 		{
 			_putchar('-');
+			co++;
 			n = -n;
 		}
 		num = n;
@@ -44,10 +45,13 @@ void print_int(va_list parg)
 			}
 			n -= digit * x;
 			x /= 10;
+			co++;
 		}
 	}
 	else
 	{
 		_putchar('0');
+		co++;
 	}
+	return (co);
 }

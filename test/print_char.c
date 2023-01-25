@@ -7,9 +7,12 @@
  **
  ** Return: 1.
  **/
-void print_char(va_list parg)
+int print_char(va_list parg)
 {
-	unsigned char c;
-	c = va_arg(parg, int);
-	_putchar(c);
+	unsigned char car;
+	unsigned int co = 0;
+
+	car = va_arg(parg, int);
+	_putchar(car);
+	return (co++);
 }

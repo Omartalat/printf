@@ -8,7 +8,7 @@
  **/
 int _printf(const char *format, ...)
 {
-	unsigned int index, count;
+	unsigned int i, c;
 	va_list parg;
 
 	va_start(parg, *format);
@@ -18,51 +18,25 @@ int _printf(const char *format, ...)
 	}
 	else
 	{
-		index = 0;
-		count = 0;
-		while (format[index] != '\0')
+		i = 0;
+		c = 0;
+		while (format[i] != '\0')
 		{
-			if (format[index] != '%')
+			if (format[i] != '%')
 			{
-				_putchar(format[index]);
-				index++;
-				count++;
+				_putchar(format[i]);
+				i++;
+				c++;	
 			}
 			else
 			{
-				if (format[index + 1] == '%')
-				{
-					_putchar(format[index]);
-					index++;
-					count++;
-					_putchar(format[index]);
-				}
-				else if (format[index + 1] == 'c')
-				{
-					print_char(parg);
-					index++;
-				}
-				else if (format[index + 1] == 's')
-				{
-					print_string(parg);
-					index++;
-				}
-				else if (format[index + 1] == 'i' || format[index + 1] == 'd')
-				{
-					print_int(parg);
-					index++;
-				}
-				else
-				{
-					_putchar(format[index]);
-					index++;
-					count++;
-					_putchar(format[index]);
-				}
-				index++;
-				count++;
+				print_(format, i, parg);
+				c += print_(format, i, parg);
+				i +=2;
 			}
 		}
-		return (count);
+		return (c);
 	}
+
+	va_end(parg);
 }
