@@ -11,7 +11,7 @@ int print_string(va_list parg)
 {
 	char *my_string;
 	int  i = 0, co = 0;
-	
+
 	my_string = va_arg(parg, char *);
 	while (my_string[i])
 	{
